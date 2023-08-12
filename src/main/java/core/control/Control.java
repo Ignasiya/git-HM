@@ -4,40 +4,54 @@ import core.data.ToysDistributor;
 import core.model.Mode;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Control implements BasicControl {
-    private final Mode[] modes;
-    private ToysDistributor toys;
+    private final Map<String, Mode> modes;
+    private final ToysDistributor toys;
 
-    public Control(ToysDistributor toys, Mode... modes) {
+    public Control(ToysDistributor toys, Map<String, Mode> modes) {
         this.modes = modes;
         this.toys = toys;
     }
 
     public int[] maxSizeMenu() {
         int maxName = 0, maxDescription = 0;
-        for (Mode mode : modes) {
-            if (mode.getNameMenu().length() > maxName) maxName = mode.getNameMenu().length();
-            if (mode.getDescription().length() > maxDescription) maxDescription = mode.getDescription().length();
+        for (Map.Entry<String, Mode> mode : modes.entrySet()) {
+            if (mode.getValue().getNameMenu().length() > maxName)
+                maxName = mode.getValue().getNameMenu().length();
+            if (mode.getValue().getDescription().length() > maxDescription)
+                maxDescription = mode.getValue().getDescription().length();
         }
         return new int[]{maxName, maxDescription};
     }
 
     @Override
-    public void onExecute(int item, Scanner in) {
-        modes[item].execute(toys, in);
+    public void onExecute(String item, Scanner in) {
+        try {
+            modes.get(item).execute(toys, in);
+        } catch (Exception e) {
+            System.out.println("err: введено неверно значение");
+        }
     }
 
     @Override
     public String toString() {
         StringBuilder main = new StringBuilder();
         int[] size = maxSizeMenu();
-        System.out.println("-".repeat(size[0]) + "  " + "-".repeat(size[1]));
-        for (int i = 0; i < modes.length; i++) {
-            main
+        main.append("-".repeat(size[0]))
+                .append("   ")
+                .append("-".repeat(size[1]))
+                .append("\n");
+        for (Map.Entry<String, Mode> mode : modes.entrySet()) {
+            main.append(mode.getValue().getNameMenu())
+                    .append(" ".repeat(size[0] - mode.getValue().getNameMenu().length()))
+                    .append("   ")
+                    .append(mode.getValue().getDescription())
+                    .append("\n");
         }
-        main.append()
         return main.toString();
     }
 }

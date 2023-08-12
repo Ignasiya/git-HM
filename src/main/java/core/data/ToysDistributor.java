@@ -1,5 +1,6 @@
 package core.data;
 
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class ToysDistributor {
@@ -7,6 +8,33 @@ public class ToysDistributor {
 
     public ToysDistributor(Queue<Toy> toys) {
         this.toys = toys;
+    }
+
+    public ToysDistributor() {
+    }
+
+    public Queue<Toy> getToys() {
+        return toys;
+    }
+
+    public void setToys(Queue<Toy> toys) {
+        this.toys = toys;
+    }
+
+    public void addToy(Toy toy) {
+        toys.add(toy);
+    }
+
+    public int maxId() {
+        if (toys == null){
+            this.toys = new PriorityQueue<>();
+            return 1;
+        }
+        int max = 0;
+        for (Toy toy : toys) {
+            if (toy.getId() > max) max = toy.getId();
+        }
+        return max;
     }
 
     @Override
