@@ -3,5 +3,5 @@ package core.control;
 import java.util.Scanner;
 
 public interface BasicControl {
-    public void onExecute(int item, Scanner in);
+    public void onExecute(String item, Scanner in);
 }

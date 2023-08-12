@@ -1,10 +1,12 @@
 package core.data;
 
+import java.util.Objects;
+
 public class Toy implements Comparable<Toy> {
     private int id;
     private Integer chanceFalling;
     private Integer quantity;
-    private final String name;
+    private String name;
 
 
     public Toy(int id, Integer chanceFalling, Integer quantity, String name) {
@@ -12,6 +14,13 @@ public class Toy implements Comparable<Toy> {
         this.chanceFalling = chanceFalling;
         this.quantity = quantity;
         this.name = name;
+    }
+
+    public Toy() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Integer getChanceFalling() {
@@ -41,11 +50,19 @@ public class Toy implements Comparable<Toy> {
 
     @Override
     public String toString() {
-        return "Игрушка \"" + name + "\", количество [" + quantity + "], шанс выпадения [" + chanceFalling + "]\n";
+        return "Игрушка \"" + name + "\", количество [" + quantity + "], шанс выпадения [" + chanceFalling * 10 + "%]\n";
     }
 
     @Override
     public int compareTo(Toy o) {
         return o.chanceFalling > this.chanceFalling ? 1 : -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Toy toy = (Toy) o;
+        return id == toy.id;
     }
 }

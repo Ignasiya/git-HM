@@ -1,0 +1,11 @@
+[ {
+  "id" : 1,
+  "chanceFalling" : 6,
+  "quantity" : 5,
+  "name" : "Машинка"
+}, {
+  "id" : 2,
+  "chanceFalling" : 3,
+  "quantity" : 10,
+  "name" : "Робот"
+} ]

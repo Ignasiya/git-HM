@@ -4,14 +4,15 @@ import core.data.ToysDistributor;
 
 import java.util.Scanner;
 
-public class AutoMode extends Mode {
+public class Exit extends Mode {
 
-    public AutoMode() {
-        super("auto", "загружаем базу из файла");
+    public Exit() {
+        super("exit", "выход");
     }
 
     @Override
     public void execute(ToysDistributor toys, Scanner scanner) {
-
+        System.out.println("-> выход...");
+        System.exit(0);
     }
 }
