@@ -1,11 +1,11 @@
 [ {
   "id" : 1,
-  "chanceFalling" : 6,
+  "chanceFalling" : 60,
   "quantity" : 5,
   "name" : "Машинка"
 }, {
   "id" : 2,
-  "chanceFalling" : 3,
-  "quantity" : 10,
+  "chanceFalling" : 33,
+  "quantity" : 13,
   "name" : "Робот"
 } ]

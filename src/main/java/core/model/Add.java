@@ -14,21 +14,7 @@ public class Add extends Mode {
 
     @Override
     public void execute(ToysDistributor toys, Scanner scanner) {
-        System.out.print("Введите имя игрушки ->");
-        String name = scanner.next().trim().strip();
-        int chanceFalling;
-        int quantity;
-        try {
-            System.out.print("Введите колличество игрушек ->");
-            quantity = scanner.nextInt();
-            System.out.print("Введите шанс выпадения (1-9) ->");
-            chanceFalling = scanner.nextInt();
-            if (chanceFalling < 1 || chanceFalling > 9) throw new InputMismatchException();
-        } catch (InputMismatchException e) {
-            throw new RuntimeException();
-        }
-        Toy newToy = new Toy(toys.maxId() + 1, chanceFalling, quantity, name);
-        toys.addToy(newToy);
+        toys.addToy(getToy(toys, scanner, 1));
         System.out.println("-> добавлено успешно");
     }
 }

@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Toy implements Comparable<Toy> {
     private int id;
-    private Integer chanceFalling;
+    private Short chanceFalling;
     private Integer quantity;
     private String name;
 
 
-    public Toy(int id, Integer chanceFalling, Integer quantity, String name) {
+    public Toy(int id, Short chanceFalling, Integer quantity, String name) {
         this.id = id;
         this.chanceFalling = chanceFalling;
         this.quantity = quantity;
@@ -23,7 +23,7 @@ public class Toy implements Comparable<Toy> {
         return id;
     }
 
-    public Integer getChanceFalling() {
+    public Short getChanceFalling() {
         return chanceFalling;
     }
 
@@ -35,13 +35,11 @@ public class Toy implements Comparable<Toy> {
         return name;
     }
 
-    public void setChanceFalling(Integer chanceFalling) {
-        try {
-            if (chanceFalling <= 0 || chanceFalling == null) throw new RuntimeException();
-            this.chanceFalling = chanceFalling;
-        } catch (RuntimeException e) {
-            System.out.println("шанс выпадения задан неверно,\n принимаются значения от 1 до 9");
-        }
+    public void setToy(Toy toy) {
+        this.id = toy.getId();
+        this.chanceFalling = toy.getChanceFalling();
+        this.quantity = toy.getQuantity();
+        this.name = toy.getName();
     }
 
     public void decreaseQuantity() {
@@ -50,7 +48,7 @@ public class Toy implements Comparable<Toy> {
 
     @Override
     public String toString() {
-        return "Игрушка \"" + name + "\", количество [" + quantity + "], шанс выпадения [" + chanceFalling * 10 + "%]\n";
+        return "Игрушка \"" + name + "\", количество [" + quantity + "], шанс выпадения [" + chanceFalling + "%]\n";
     }
 
     @Override

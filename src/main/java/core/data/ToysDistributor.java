@@ -37,6 +37,13 @@ public class ToysDistributor {
         return max;
     }
 
+    public Toy searchById(int search) {
+        for (Toy toy : toys) {
+            if (toy.getId() == search) return toy;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

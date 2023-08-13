@@ -1,5 +1,6 @@
 package core.view;
 
+import core.control.BasicControl;
 import core.control.Control;
 import core.data.ToysDistributor;
 import core.model.*;
@@ -9,32 +10,39 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class View implements BasicView {
-    private Control control;
+    private final BasicControl control;
+
 
     public View() {
-        Mode read = new Read();
-        Mode save = new Save();
-        Mode add = new Add();
-        Mode show = new Show();
+        Mode start = new Lottery();
+        Mode setting = new Settings(this);
         Mode exit = new Exit();
         Map<String, Mode> menu = new LinkedHashMap<>();
-        menu.put(read.getNameMenu(), read);
-        menu.put(save.getNameMenu(), save);
-        menu.put(add.getNameMenu(), add);
-        menu.put(show.getNameMenu(), show);
+        menu.put(start.getNameMenu(), start);
+        menu.put(setting.getNameMenu(), setting);
         menu.put(exit.getNameMenu(), exit);
         this.control = new Control(new ToysDistributor(), menu);
-        start(control);
+        start(control, "\nПриветствуем в Магазине игрушек");
+    }
+
+    public View(BasicControl control, String text) {
+        this.control = control;
+        start(control, text);
     }
 
     @Override
-    public void start(Control control) {
+    public BasicControl getControl() {
+        return control;
+    }
+
+    @Override
+    public void start(BasicControl control, String text) {
         Scanner in = new Scanner(System.in).useDelimiter("\r?\n");
-        System.out.println("\nПриветствуем в Магазине игрушек");
+        System.out.println(text);
         System.out.print(control.toString() + "\n");
         while (true) {
             System.out.print(" ->");
-            String input = in.next().strip().trim();
+            String input = in.next().strip().trim().toLowerCase();
             control.onExecute(input, in);
         }
     }
