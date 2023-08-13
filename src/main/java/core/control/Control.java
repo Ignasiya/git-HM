@@ -17,6 +17,10 @@ public class Control implements BasicControl {
         this.toys = toys;
     }
 
+    /**
+     * @apiNote метод для автоматизации красивого вывода меню в консоль
+     * @return максимальные размеры имени и описания меню
+     */
     public int[] maxSizeMenu() {
         int maxName = 0, maxDescription = 0;
         for (Map.Entry<String, Mode> mode : modes.entrySet()) {
@@ -28,6 +32,11 @@ public class Control implements BasicControl {
         return new int[]{maxName, maxDescription};
     }
 
+    /**
+     * @apiNote основной метод выполнения "Паттерн Команды"
+     * @param item ключ map для выполнения команды
+     * @param in консоль
+     */
     @Override
     public void onExecute(String item, Scanner in) {
         try {

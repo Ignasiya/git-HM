@@ -37,6 +37,11 @@ public class ToysDistributor {
         return max;
     }
 
+    /**
+     * @apiNote поиск экземпляра класса Toy в списке toys по id
+     * @param search заданный id
+     * @return экземпляра класса Toy или null
+     */
     public Toy searchById(int search) {
         for (Toy toy : toys) {
             if (toy.getId() == search) return toy;
@@ -44,6 +49,10 @@ public class ToysDistributor {
         return null;
     }
 
+    /**
+     * @apiNote уменьшение количества игрушек при выигрыше, и удаление экземпляра, если количество равно 0
+     * @param toy экземпляра класса Toy
+     */
     public void decreaseRemove(Toy toy) {
         toy.decreaseQuantity();
         if (toy.getQuantity() == 0) toys.remove(toy);

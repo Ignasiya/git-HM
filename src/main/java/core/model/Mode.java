@@ -25,6 +25,13 @@ public abstract class Mode {
         return description;
     }
 
+    /**
+     * @apiNote метод создания класса Toy от пользователя
+     * @param toys список игрушек
+     * @param scanner консоль
+     * @param id перменная разницы, чтобы индекс не менялся при редактированни
+     * @return новый экземрляр класса Toy
+     */
     protected Toy getToy(ToysDistributor toys, Scanner scanner, int id) {
         System.out.print("введите имя игрушки ->");
         String name = scanner.next().trim().strip();

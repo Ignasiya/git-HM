@@ -43,6 +43,10 @@ public class Lottery extends Mode {
         }
     }
 
+    /**
+     * @apiNote подготовка состояния класса для генерация лотереи
+     * @param toys список игрушек
+     */
     private void prepare(Queue<Toy> toys) {
         for (Toy toy : toys) {
             this.id.add(toy.getId());
@@ -51,6 +55,10 @@ public class Lottery extends Mode {
         }
     }
 
+    /**
+     * @apiNote генерация лотереи через мнимый массив и случайное число
+     * @return id игрушки, -1 в идеале не возвращается
+     */
     private int randomGeneration() {
         Random random = new Random();
         int index = random.nextInt(count);

@@ -19,6 +19,9 @@ public class Client {
         this.winning = winning;
     }
 
+    /**
+     * @apiNote запис результата розыгрыша в файл
+     */
     public void writeToFile() {
         String filePath = "C:\\Users\\Василий\\Documents\\practicecode\\ToyStore_drawing\\src\\main\\resources\\resultLottery.txt";
         try {
