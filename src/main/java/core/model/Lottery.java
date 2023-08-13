@@ -9,6 +9,7 @@ import java.util.*;
 public class Lottery extends Mode {
     private List<Integer> id;
     private List<Short> chance;
+    private int sumChance;
     private int count;
 
     public Lottery() {
@@ -33,10 +34,15 @@ public class Lottery extends Mode {
                 Toy result = toys.searchById(randomGeneration());
                 System.out.println("Вы выиграли \"" + result.getName() + "\"");
                 resultLottery.add(result.getName());
+                System.out.println("Количество оставшихся игрушек " + --count);
                 if (toys.decreaseRemove(result)) prepare(toys.getToys());
-                System.out.println("Прододжить розыгрыш? Y/N");
+                System.out.println("\nПрододжить розыгрыш? Y/N");
                 String ok = scanner.next().trim().strip().toLowerCase();
                 if (!ok.equals("y")) game = false;
+                if (count == 0){
+                    game = false;
+                    System.out.println("все разыграли");
+                }
             } while (game);
             client.setWinning(resultLottery);
             client.writeToFile();
@@ -50,11 +56,13 @@ public class Lottery extends Mode {
     public void prepare(Queue<Toy> toys) {
         id = new ArrayList<>();
         chance = new ArrayList<>();
+        sumChance = 0;
         count = 0;
         for (Toy toy : toys) {
             this.id.add(toy.getId());
             this.chance.add(toy.getChanceFalling());
-            this.count += toy.getChanceFalling();
+            this.sumChance += toy.getChanceFalling();
+            this.count += toy.getQuantity();
         }
     }
 
@@ -64,7 +72,7 @@ public class Lottery extends Mode {
      */
     private int randomGeneration() {
         Random random = new Random();
-        int index = random.nextInt(count);
+        int index = random.nextInt(sumChance);
         for (int i = 0; i < chance.size(); i++) {
             index -= chance.get(i);
             if (index < 0) {

@@ -1,7 +1,7 @@
 [ {
   "id" : 4,
   "chanceFalling" : 81,
-  "quantity" : 14,
+  "quantity" : 7,
   "name" : "Кубик"
 }, {
   "id" : 3,
@@ -21,6 +21,6 @@
 }, {
   "id" : 5,
   "chanceFalling" : 33,
-  "quantity" : 13,
+  "quantity" : 3,
   "name" : "Лего"
 } ]
