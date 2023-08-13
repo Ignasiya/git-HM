@@ -26,14 +26,14 @@ public abstract class Mode {
     }
 
     protected Toy getToy(ToysDistributor toys, Scanner scanner, int id) {
-        System.out.print("Введите имя игрушки ->");
+        System.out.print("введите имя игрушки ->");
         String name = scanner.next().trim().strip();
         short chanceFalling;
         int quantity;
         try {
-            System.out.print("Введите колличество игрушек ->");
+            System.out.print("введите колличество игрушек ->");
             quantity = scanner.nextInt();
-            System.out.print("Введите шанс выпадения (1-99) ->");
+            System.out.print("введите шанс выпадения (1-99) ->");
             chanceFalling = scanner.nextShort();
             if (chanceFalling < 1 || chanceFalling > 99) throw new InputMismatchException();
         } catch (InputMismatchException e) {

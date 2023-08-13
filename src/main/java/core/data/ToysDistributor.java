@@ -44,6 +44,11 @@ public class ToysDistributor {
         return null;
     }
 
+    public void decreaseRemove(Toy toy) {
+        toy.decreaseQuantity();
+        if (toy.getQuantity() == 0) toys.remove(toy);
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

@@ -32,7 +32,7 @@ public class Control implements BasicControl {
     public void onExecute(String item, Scanner in) {
         try {
             modes.get(item).execute(toys, in);
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             System.out.println("err: введено неверно значение");
         }
     }

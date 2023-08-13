@@ -1,4 +1,14 @@
 [ {
+  "id" : 4,
+  "chanceFalling" : 81,
+  "quantity" : 40,
+  "name" : "Кубик"
+}, {
+  "id" : 3,
+  "chanceFalling" : 64,
+  "quantity" : 9,
+  "name" : "Вертолет"
+}, {
   "id" : 1,
   "chanceFalling" : 60,
   "quantity" : 5,
