@@ -7,8 +7,8 @@ import core.data.ToysDistributor;
 import java.util.*;
 
 public class Lottery extends Mode {
-    private final List<Integer> id = new ArrayList<>();
-    private final List<Short> chance = new ArrayList<>();
+    private List<Integer> id;
+    private List<Short> chance;
     private int count;
 
     public Lottery() {
@@ -33,7 +33,7 @@ public class Lottery extends Mode {
                 Toy result = toys.searchById(randomGeneration());
                 System.out.println("Вы выиграли \"" + result.getName() + "\"");
                 resultLottery.add(result.getName());
-                toys.decreaseRemove(result);
+                if (toys.decreaseRemove(result)) prepare(toys.getToys());
                 System.out.println("Прододжить розыгрыш? Y/N");
                 String ok = scanner.next().trim().strip().toLowerCase();
                 if (!ok.equals("y")) game = false;
@@ -47,7 +47,10 @@ public class Lottery extends Mode {
      * @apiNote подготовка состояния класса для генерация лотереи
      * @param toys список игрушек
      */
-    private void prepare(Queue<Toy> toys) {
+    public void prepare(Queue<Toy> toys) {
+        id = new ArrayList<>();
+        chance = new ArrayList<>();
+        count = 0;
         for (Toy toy : toys) {
             this.id.add(toy.getId());
             this.chance.add(toy.getChanceFalling());

@@ -1,21 +1,26 @@
 [ {
   "id" : 4,
   "chanceFalling" : 81,
-  "quantity" : 40,
+  "quantity" : 14,
   "name" : "Кубик"
 }, {
   "id" : 3,
   "chanceFalling" : 64,
-  "quantity" : 9,
+  "quantity" : 4,
   "name" : "Вертолет"
 }, {
-  "id" : 1,
-  "chanceFalling" : 60,
-  "quantity" : 5,
-  "name" : "Машинка"
+  "id" : 6,
+  "chanceFalling" : 53,
+  "quantity" : 6,
+  "name" : "Мячик"
 }, {
   "id" : 2,
+  "chanceFalling" : 45,
+  "quantity" : 2,
+  "name" : "Робот"
+}, {
+  "id" : 5,
   "chanceFalling" : 33,
   "quantity" : 13,
-  "name" : "Робот"
+  "name" : "Лего"
 } ]

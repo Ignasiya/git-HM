@@ -10,8 +10,7 @@ public class ToysDistributor {
         this.toys = toys;
     }
 
-    public ToysDistributor() {
-    }
+    public ToysDistributor() {}
 
     public Queue<Toy> getToys() {
         return toys;
@@ -22,9 +21,13 @@ public class ToysDistributor {
     }
 
     public void addToy(Toy toy) {
-        toys.add(toy);
+        toys.offer(toy);
     }
 
+    /**
+     * @apiNote нахождение максимального id в списке, для исключения повторений id
+     * @return максимальый id
+     */
     public int maxId() {
         if (toys == null){
             this.toys = new PriorityQueue<>();
@@ -53,9 +56,13 @@ public class ToysDistributor {
      * @apiNote уменьшение количества игрушек при выигрыше, и удаление экземпляра, если количество равно 0
      * @param toy экземпляра класса Toy
      */
-    public void decreaseRemove(Toy toy) {
+    public boolean decreaseRemove(Toy toy) {
         toy.decreaseQuantity();
-        if (toy.getQuantity() == 0) toys.remove(toy);
+        if (toy.getQuantity() == 0) {
+            toys.remove(toy);
+            return true;
+        }
+        return false;
     }
 
     @Override
