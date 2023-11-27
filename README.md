@@ -1,16 +1,18 @@
-# Информация о проекте
+# История
 
-Необходимо написать проект, для розыгрыша в магазине игрушек. Функционал
-должен содержать добавление новых игрушек и задания веса для выпадения
-игрушек.
-
-## Задание
-1) Напишите класс-конструктор у которого принимает минимум 3 строки,
-   содержащие три поля id игрушки, текстовое название и частоту выпадения игрушки;
-2) Из принятой строки id и частоты выпадения(веса) заполнить минимум три массива;
-3) Используя API коллекцию: java.util.PriorityQueue добавить элементы в коллекцию;
-4) Организовать общую очередь;
-5) Вызвать Get 10 раз и записать результат в файл.
-
-## Критерии оценки
-Приложение должно запускаться, записывать значения в файл.
+4 git remote -v
+5 git remove origin
+6 git remote remove origin
+7 git remote add origin https://github.com/Ignasiya/git-HM.git
+8 git remote -v
+9 git push
+10 git pull origin main
+11 git push -u origin main
+12 git remote -v
+13 git fetch --all
+14 git log origin/main ^main
+15 git merge origin/main
+16 git pull origin main --allow-unrelated-histories
+17 git add .
+18 git commit -am "сделал"
+19 git push
